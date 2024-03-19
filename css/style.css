@@ -53,6 +53,10 @@ body {
   font-weight: 400;
 }
 
+.burger {
+  display: none;
+}
+
 :root {
   --gap: 30px;
 }
@@ -222,7 +226,7 @@ body {
 }
 
 .hero__content {
-  max-width: 50%;
+  width: 50%;
   flex-direction: column;
   align-items: start;
 }
@@ -363,7 +367,8 @@ body {
 .blog-preview {
   overflow: hidden;
   border: 1px solid #e4e4e4;
-  border-radius: 5px
+  border-radius: 5px;
+  height: 100%;
 }
 
 .blog-preview-img {
@@ -628,6 +633,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 14px;
   width: 49%;
 }
 
@@ -644,10 +650,6 @@ body {
   border-radius: 50px;
   opacity: 0.6;
   transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-}
-
-.form-input:nth-child(-n+2) {
-  margin-bottom: 19px;
 }
 
 .form-input:focus {
