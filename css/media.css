@@ -6,18 +6,57 @@
 }
 
 @media(max-width: 992px) {
+  /* burger menu */
   .header__nav {
-    display: none;
+    position: fixed;
+    margin-right: 15px;
+    padding: 20px 0;
+    width: 40%;
+    height: calc(100vh - 80px);
+    max-width: 300px;
+    overflow-y: auto;
+    right: 0;
+    top: 80px;
+    z-index: 2;
+    background-color: white;
+    transform: translateX(120%);
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .nav--visible {
+    transform: none;
+  }
+
+  .nav__list {
+    flex-direction: column;
+  }
+
+  .nav__item {
+    width: 100%;
+  }
+
+  .nav__item:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .nav__link {
+    display: inline-block;
+    width: 100%;
+    padding: 0 20px;
+    font-size: 20px;
+    text-align: right;
   }
 
   .burger {
-    position: relative;
     display: block;
+    position: relative;
     border: 1px solid currentColor;
     border-radius: 3px;
     width: 40px;
     height: 40px;
     color: #3172b9;
+    transition: border-radius 0.3s ease-in-out, border 0.3s ease-in-out;
   }
 
   .burger__line {
@@ -28,20 +67,54 @@
     border-radius: inherit;
     background-color: currentColor;
     transform: translateX(-50%);
+    transition: opacity 0.3s ease-in-out;
   }
 
-  .burger__line:nth-child(1) {
-    top: 13px;
+  .burger::before,
+  .burger::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    width: 20px;
+    height: 2px;
+    background-color: currentColor;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
 
-  .burger__line:nth-child(2) {
+  .burger::before {
+    top: 30%;
+  }
+
+  .burger::after {
+    bottom: 24%;
+  }
+
+  .burger--active {
+    border-radius: 100%;
+    border: 1px solid #fe4141;
+  }
+
+  .burger--active .burger__line {
+    opacity: 0;
+  }
+
+  .burger--active::before {
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: rotate(45deg);
+    background-color: #fe4141;
   }
 
-  .burger__line:nth-child(3) {
-    bottom: 13px;
+  .burger--active::after {
+    bottom: auto;
+    top: 50%;
+    transform: rotate(-45deg);
+    background-color: #fe4141;
   }
+
+  .stop-scroll {
+    overflow: hidden;
+  }
+  /* end burger menu */
 
   .header__btn {
     margin-right: 7px;
